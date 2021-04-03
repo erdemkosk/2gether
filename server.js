@@ -13,20 +13,21 @@ app.get("/", (req, res) => {
   res.redirect(`/${uuidv4()}`);
 });
 
+app.get("/rooms", (req, res) => {
+  res.send(JSON.stringify(rooms, null, 3));
+});
+
 app.get("/:room", (req, res) => {
-  res.render("room", { roomId: req.param.room });
+  res.render("room");
 });
 
 const rooms = {};
 
 io.on("connection", (socket) => {
-socket.on("disconnect", ()=>{
-    socket.broadcast.emit("user-disconnected", socket.id); 
-});
 
 socket.on("call-closed", (roomId, peerId)=>{
- console.log(roomId, peerId, 'closed');
  socket.to(roomId).broadcast.emit("peer-closed", peerId);
+ rooms[roomId] = (rooms[roomId] || []).filter(user => user !== peerId);
 });
   socket.on("join-room", (roomId, userId, userName) => {
 
@@ -43,8 +44,7 @@ socket.on("call-closed", (roomId, peerId)=>{
     });
 
   const otherUsers = rooms[roomId].filter(id => id !== userId);
-  console.log(otherUsers);
-  console.log(rooms[roomId]);
+
   if (otherUsers.length > 0 ) {
       socket.emit("other-users", otherUsers);
       //socket.to(roomId).broadcast.emit("other-users", otherUsers);

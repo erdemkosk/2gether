@@ -72,9 +72,9 @@ navigator.mediaDevices
       }
       else {
         video.setAttribute("id", call.peer);
+        setVideoReversed(video);
       }
 
-      setVideoReversed(video);
       call.on("stream", (userVideoStream) => {
         addVideoStream(video, userVideoStream);
       });
@@ -106,10 +106,6 @@ navigator.mediaDevices
       console.log(otherUsers);
     });
   });
-
-socket.on("user-disconnected", (userId)=>{
-  console.log(userId);
-});
 
 const addVideoStream = (video, stream) => {
   video.srcObject = stream;
@@ -220,12 +216,14 @@ inviteButton.addEventListener("click", (e) => {
 socket.on("createMessage", (message, userName) => {
   messages.innerHTML =
     messages.innerHTML +
-    `<div class="message">
-        <b><i class="far fa-user-circle"></i> <span> ${
-          userName === user ? user : userName
+    `<div class="message" style="word-wrap:break-word; text-align: ${
+      userName === user ? "left" : "right"
+    };">
+        <b><span> ${
+          userName === user ? user + ':' : userName + ':'
         }</span> </b>
         <span style="background-color:${
-          userName === user ? "#95a5a6" : "white"
+          userName === user ? "white" : "white"
         }">${message}</span>
     </div>`;
 });

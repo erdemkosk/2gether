@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Unica+One&display=swap");
+
 
 :root {
-  --main-darklg: #1d2635;
-  --main-dark: #161d29;
-  --primary-color: #2f80ec;
+  --main-darklg: #1A3E4C;
+  --main-dark: #092834;
+  --primary-color: #67AFCB;
   --main-light: #eeeeee;
   font-family: "Poppins", sans-serif;
 }
@@ -23,8 +25,10 @@
   background-color: var(--main-darklg);
 }
 
-.logo > h3 {
+.logo > h1 {
   color: var(--main-light);
+  font-family: "Unica One", cursive;
+  -webkit-animation: crescendo 7s infinite alternate;
 }
 
 .main {
@@ -78,7 +82,7 @@ video {
   align-items: center;
   background-color: var(--primary-color);
   height: 50px;
-  border-radius: 5px;
+  border-radius: 50%;
   color: var(--main-light);
   font-size: 1.2rem;
   width: 50px;
@@ -93,7 +97,7 @@ video {
   display: flex;
   flex-direction: column;
   flex: 0.3;
-  background-color: #242f41;
+  background-color: #0b3342;
 }
 
 .main__chat_window {
@@ -135,7 +139,6 @@ video {
 
 .message > b {
   color: #eeeeee;
-  display: flex;
   align-items: center;
   text-transform: capitalize;
 }
@@ -190,6 +193,11 @@ video::-webkit-media-controls-time-remaining-display
   display: none;
 }
 
+@keyframes crescendo {
+  0%   {transform: scale(.7);}
+  50%   {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
 
 @media (max-width: 700px) {
   .main__right {
