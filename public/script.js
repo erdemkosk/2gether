@@ -226,6 +226,11 @@ socket.on("createMessage", (message, userName) => {
           userName === user ? "white" : "white"
         }">${message}</span>
     </div>`;
+
+    let allChat = document.querySelector(".messages");
+   allChat.scrollIntoView({ behavior: 'smooth', block: 'end' });
+   
+    
 });
 
 function setVideoReversed(element) {

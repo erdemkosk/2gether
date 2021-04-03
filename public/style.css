@@ -115,6 +115,7 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .main__message_container > input {
