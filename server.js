@@ -28,6 +28,9 @@ io.on("connection", (socket) => {
 socket.on("call-closed", (roomId, peerId)=>{
  socket.to(roomId).broadcast.emit("peer-closed", peerId);
  rooms[roomId] = (rooms[roomId] || []).filter(user => user !== peerId);
+ if(rooms[roomId].length === 0){
+   delete rooms[roomId];
+ }
 });
   socket.on("join-room", (roomId, userId, userName) => {
 
