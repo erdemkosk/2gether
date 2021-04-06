@@ -7,9 +7,15 @@ const backBtn = document.querySelector(".header__back");
 myVideo.muted = true;
 myVideo.setAttribute("controls", "controls");
 
-
 var myPeerId = '';
 const roomMates = [];
+
+backBtn.addEventListener("click", () => {
+  document.querySelector(".main__left").style.display = "flex";
+  document.querySelector(".main__left").style.flex = "1";
+  document.querySelector(".main__right").style.display = "none";
+  document.querySelector(".header__back").style.display = "none";
+});
 
 setVideoReversed(myVideo);
 
