@@ -1,4 +1,4 @@
-# Welcome to quiz_api 👋
+# Welcome to 2gether 👋
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 ![Prerequisite](https://img.shields.io/badge/node-10.15.3-blue.svg)
 ![Prerequisite](https://img.shields.io/badge/npm-6.4.1-blue.svg)
